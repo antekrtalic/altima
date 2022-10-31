@@ -61,7 +61,7 @@ class FamilyTreeTest {
 
         Map<String, FamilyNode> nodeMap = familyTree.getFamilyTrees();
         //Get root nodes: parents without parent
-        List<FamilyNode> withOutParents = new ArrayList<>(nodeMap.values());
+        List<FamilyNode> withOutParents = familyTree.withoutParent();
         Assertions.assertEquals(1, withOutParents.size(), "Should have 1 node without any parent");
         familyTree.printTree();
 
@@ -96,7 +96,7 @@ class FamilyTreeTest {
         Assertions.assertEquals(1, nodeMap.get("A").getChildren().size(), "A should have 1 child");
         Assertions.assertEquals(1, nodeMap.get("C").getChildren().size(), "C should have 1 child");
 
-        Assertions.assertEquals(2, nodeMap.get("B").getChildren().size(), "B should have 2 children");
+        Assertions.assertEquals(2, nodeMap.get("B").getParents().size(), "B should have 2 parent");
 
         familyTree.printTree();
     }
